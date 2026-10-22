@@ -1,0 +1,133 @@
+﻿<Window x:Class="KalkulatorWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Kalkulator"
+        Height="580" Width="370"
+        MinHeight="540" MinWidth="330"
+        WindowStartupLocation="CenterScreen"
+        Background="#15171E"
+        Foreground="White">
+
+    <Window.Resources>
+        <Style x:Key="CalcButton" TargetType="Button">
+            <Setter Property="Background" Value="#292D38"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="23"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="14">
+                            <ContentPresenter
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#414758"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Opacity" Value="0.7"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+                Background="#1E212B"
+                CornerRadius="18"
+                Padding="18"
+                Margin="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock x:Name="HistoryText"
+                           Text=""
+                           FontSize="15"
+                           Foreground="#9299AA"
+                           TextAlignment="Right"/>
+
+                <TextBox x:Name="Display"
+                         Grid.Row="1"
+                         Text="0"
+                         FontSize="39"
+                         FontWeight="Light"
+                         Background="Transparent"
+                         Foreground="White"
+                         BorderThickness="0"
+                         IsReadOnly="True"
+                         IsTabStop="False"
+                         TextAlignment="Right"
+                         VerticalContentAlignment="Center"
+                         HorizontalContentAlignment="Right"
+                         Padding="0"/>
+            </Grid>
+        </Border>
+
+        <UniformGrid Grid.Row="1"
+                     Columns="4"
+                     Rows="5"
+                     Margin="0,8,0,0">
+
+            <Button Content="C" Click="Clear_Click"
+                    Style="{StaticResource CalcButton}"
+                    Background="#464B5A" Foreground="#FF8585"/>
+            <Button Content="⌫" Click="Backspace_Click"
+                    Style="{StaticResource CalcButton}"
+                    Background="#464B5A"/>
+            <Button Content="±" Click="Sign_Click"
+                    Style="{StaticResource CalcButton}"
+                    Background="#464B5A"/>
+            <Button Content="÷" Tag="/" Click="Operator_Click"
+                    Style="{StaticResource CalcButton}"
+                    Background="#FF9F43"/>
+
+            <Button Content="7" Click="Number_Click" Style="{StaticResource CalcButton}"/>
+            <Button Content="8" Click="Number_Click" Style="{StaticResource CalcButton}"/>
+            <Button Content="9" Click="Number_Click" Style="{StaticResource CalcButton}"/>
+            <Button Content="×" Tag="*" Click="Operator_Click"
+                    Style="{StaticResource CalcButton}"
+                    Background="#FF9F43"/>
+
+            <Button Content="4" Click="Number_Click" Style="{StaticResource CalcButton}"/>
+            <Button Content="5" Click="Number_Click" Style="{StaticResource CalcButton}"/>
+            <Button Content="6" Click="Number_Click" Style="{StaticResource CalcButton}"/>
+            <Button Content="−" Tag="-" Click="Operator_Click"
+                    Style="{StaticResource CalcButton}"
+                    Background="#FF9F43"/>
+
+            <Button Content="1" Click="Number_Click" Style="{StaticResource CalcButton}"/>
+            <Button Content="2" Click="Number_Click" Style="{StaticResource CalcButton}"/>
+            <Button Content="3" Click="Number_Click" Style="{StaticResource CalcButton}"/>
+            <Button Content="+" Tag="+" Click="Operator_Click"
+                    Style="{StaticResource CalcButton}"
+                    Background="#FF9F43"/>
+
+            <Button Content="%" Click="Percent_Click"
+                    Style="{StaticResource CalcButton}"/>
+            <Button Content="0" Click="Number_Click"
+                    Style="{StaticResource CalcButton}"/>
+            <Button Content="," Click="Decimal_Click"
+                    Style="{StaticResource CalcButton}"/>
+            <Button Content="=" Click="Equals_Click"
+                    Style="{StaticResource CalcButton}"
+                    Background="#4D83F7"/>
+        </UniformGrid>
+    </Grid>
+</Window>
